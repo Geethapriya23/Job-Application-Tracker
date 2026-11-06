@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Application Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>Career<span>Track.</span></h2>
+            </div>
+
+            <nav class="navigation">
+                <a href="#dashboard" class="nav-link active">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="#applications" class="nav-link">
+                    <span>▤</span> My Applications
+                </a>
+
+                <a href="#statistics" class="nav-link">
+                    <span>▥</span> Statistics
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Stay focused.</p>
+                <h3>Your dream job is waiting!</h3>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP HEADER -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Track your job search journey.</p>
+                </div>
+
+                <button class="add-btn" id="openAddModal">
+                    + Add Application
+                </button>
+
+            </header>
+
+
+            <!-- WELCOME SECTION -->
+            <section class="welcome-section" id="dashboard">
+
+                <div>
+                    <h2>Welcome Back! 👋</h2>
+                    <p>
+                        Keep track of your applications
+                        and achieve your career goals.
+                    </p>
+                </div>
+
+                <div class="welcome-icon">
+                    🚀
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS CARDS -->
+            <section class="stats-section" id="statistics">
+
+                <div class="stat-card">
+                    <p>Total Applications</p>
+                    <h2 id="totalCount">0</h2>
+                    <span>All submitted applications</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Interviews</p>
+                    <h2 id="interviewCount">0</h2>
+                    <span>Interview opportunities</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Offers</p>
+                    <h2 id="offerCount">0</h2>
+                    <span>Successful applications</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Rejected</p>
+                    <h2 id="rejectedCount">0</h2>
+                    <span>Closed applications</span>
+                </div>
+
+            </section>
+
+
+            <!-- APPLICATION SECTION -->
+            <section class="applications-section" id="applications">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>My Applications</h2>
+                        <p>Manage and monitor your job applications.</p>
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH AND FILTER -->
+                <div class="filter-section">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search company or job role..."
+                    >
+
+                    <select id="statusFilter">
+                        <option value="All">All Status</option>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+
+                </div>
+
+
+                <!-- APPLICATION TABLE -->
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Job Role</th>
+                                <th>Applied Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="applicationsTableBody">
+
+                            <!-- JavaScript will add applications here -->
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="empty-state" id="emptyState">
+                        <div>📂</div>
+                        <h3>No Applications Yet</h3>
+                        <p>
+                            Click "Add Application" to start
+                            tracking your job search.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <p>
+                    © 2026 CareerTrack. Built with HTML, CSS
+                    and JavaScript.
+                </p>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ADD APPLICATION MODAL -->
+    <div class="modal" id="applicationModal" hidden>
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">Add New Application</h2>
+
+                <button
+                    type="button"
+                    class="close-btn"
+                    id="closeAddModal"
+                    aria-label="Close"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- APPLICATION FORM -->
+            <form id="applicationForm">
+
+                <label for="companyInput">Company Name</label>
+                <input
+                    type="text"
+                    id="companyInput"
+                    placeholder="Enter company name"
+                    required
+                >
+
+                <label for="roleInput">Job Role</label>
+                <input
+                    type="text"
+                    id="roleInput"
+                    placeholder="Enter job role"
+                    required
+                >
+
+                <label for="dateInput">Applied Date</label>
+                <input
+                    type="date"
+                    id="dateInput"
+                    required
+                >
+
+                <label for="statusInput">Application Status</label>
+                <select id="statusInput" required>
+
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Selected">Selected</option>
+                    <option value="Rejected">Rejected</option>
+
+                </select>
+
+                <label for="jobLinkInput">Job Link (Optional)</label>
+                <input
+                    type="url"
+                    id="jobLinkInput"
+                    placeholder="https://example.com/job"
+                >
+
+                <label for="notesInput">Notes (Optional)</label>
+                <textarea
+                    id="notesInput"
+                    placeholder="Add interview details or notes..."
+                    rows="3"
+                ></textarea>
+
+                <div class="form-buttons">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        id="cancelForm"
+                    >
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="save-btn">
+                        Save Application
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
